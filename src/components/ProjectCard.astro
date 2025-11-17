@@ -1,16 +1,11 @@
 ---
 interface Props {
-  title: string;
-  description: string;
-  tech: string[];
-  github?: string;
-  live?: string;
-  stars?: number;
+  project: any;
   index: number;
 }
-
-const { title, description, tech, github, live, stars, index } = Astro.props;
+const { project, index } = Astro.props;
 const paddedIndex = String(index + 1).padStart(2, '0');
+const { title, description, tech = [], github, live, stars, features = [] } = project.data ?? {};
 ---
 
 <div class="project slide-up" style={`animation-delay: ${index * 0.1}s`}>
@@ -25,6 +20,14 @@ const paddedIndex = String(index + 1).padStart(2, '0');
       <h3>{title}</h3>
 
       <p class="project-description">{description}</p>
+
+      {features && features.length > 0 && (
+        <div class="project-features">
+          {features.map((feature) => (
+            <span class="feature-badge">{feature}</span>
+          ))}
+        </div>
+      )}
 
       <div class="project-links">
         {github && (
@@ -45,6 +48,7 @@ const paddedIndex = String(index + 1).padStart(2, '0');
             <span class="star-count">{stars}</span>
           </span>
         )}
+      <!-- details feature removed -->
       </div>
     </div>
   </div>
@@ -127,6 +131,36 @@ const paddedIndex = String(index + 1).padStart(2, '0');
     font-weight: 300;
   }
 
+  .project-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .feature-badge {
+    display: inline-block;
+    background: var(--hover-bg);
+    color: var(--primary-text);
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+  }
+
+  .feature-badge:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+  }
+
+    /* details toggle removed */
+
+  /* details panel styles removed */
+
   .project-links {
     display: flex;
     gap: 12px;
@@ -196,3 +230,7 @@ const paddedIndex = String(index + 1).padStart(2, '0');
     }
   }
 </style>
+
+<script>
+  /* details JS removed */
+</script>

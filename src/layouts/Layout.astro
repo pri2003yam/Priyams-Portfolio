@@ -5,8 +5,8 @@ interface Props {
 }
 
 const {
-  title = "AarusPortfolio",
-  description = "Portfolio of Aarav Gupta, a 15-year-old developer from India passionate about game development, web applications, and automation scripts.",
+  title = "Priyam's Portfolio",
+  description = "Portfolio of Priyam Raj, a B.Tech student at MNNIT Allahabad passionate about building clean, impactful software.",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -80,6 +80,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     />
     <style is:global>
       @import "../styles/global.css";
+      @import "../styles/dark-mode.css";
     </style>
   </head>
   <body>

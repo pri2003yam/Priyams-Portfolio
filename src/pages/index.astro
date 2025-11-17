@@ -10,18 +10,34 @@ import { getCollection } from "astro:content";
 const allProjects = await getCollection("projects");
 const projects = allProjects.sort((a, b) => a.data.order - b.data.order);
 
-const programmingLanguages = [
-  { name: "Python", progress: 90 },
-  { name: "JavaScript", progress: 85 },
-  { name: "HTML/CSS", progress: 95 },
-  { name: "Lua", progress: 70 },
+// Note: don't pre-render Content here — pass the project into the card and render server-side inside the component.
+
+// Tech icons grid (place SVG/PNG logos in `public/logos/` with these filenames)
+const techIcons = [
+  { name: "C++", icon: "/logos/cpp.svg" },
+  { name: "Google", icon: "/logos/google.svg" },
+  { name: "JavaScript", icon: "/logos/javascript.svg" },
+  { name: "ReactJS", icon: "/logos/react.svg" },
+  { name: "NodeJS", icon: "/logos/node.svg" },
+  { name: "ExpressJS", icon: "/logos/express.svg" },
+  { name: "MongoDB", icon: "/logos/mongo.svg" },
+  { name: "Git", icon: "/logos/git.svg" },
+  { name: "VSCode", icon: "/logos/vscode.svg" },
+  { name: "GitHub", icon: "/logos/github.svg" },
+  { name: "Tailwind", icon: "/logos/tailwind.svg" },
+  { name: "C", icon: "/logos/code.svg" },
+  { name: "JSON", icon: "/logos/json.svg" },
+  { name: "Socket.io", icon: "/logos/socket.svg" },
+  { name: "Firestore", icon: "/logos/fire.svg" },
+  { name: "Postman", icon: "/logos/postman.svg" },
 ];
 
-const frameworksTools = [
-  { name: "Git", progress: 95 },
-  { name: "Solar2D", progress: 60 },
-  { name: "VS Code", progress: 100 },
-  { name: "PyCharm", progress: 100 },
+// Coding profiles with max ratings
+const codingProfiles = [
+  { name: "Codeforces", maxRating: 1203, icon: "/logos/codeforces.svg", url: "https://codeforces.com/profile/Knight78" },
+  { name: "LeetCode", maxRating: 1884, icon: "/logos/leetcode.svg", url: "https://leetcode.com/u/priyam1210/" },
+  { name: "AtCoder", maxRating: 600, icon: "/logos/logo_bk.svg", url: "https://atcoder.jp/users/Pri2003yam" },
+  { name: "GeeksforGeeks", icon: "/logos/gfg.svg", url: "https://www.geeksforgeeks.org/user/priyamrlxz/" },
 ];
 ---
 
@@ -31,16 +47,18 @@ const frameworksTools = [
   <main>
     <section id="about" class="section fade-in">
       <div class="container">
-        <SectionHeader title="about" number="01" />
+        <SectionHeader title="about" />
         <div class="text">
           <p>
-            I have a keen interest in game development, web applications, and
-            automation scripts. In my free time, I enjoy working on personal
-            projects, contributing to open-source, and exploring new programming
-            languages. I'm always looking for new challenges and opportunities
-            to collaborate with other developers. If you're interested in
-            working together or just want to chat about tech, feel free to reach
-            out.
+            I'm a B.Tech student at MNNIT Allahabad building clean, impactful software across the full stack. I learn by creating—web apps, APIs, dashboards, real-time systems, and CLI tools with React, Node.js, MongoDB, and C++.
+
+            <br /><br />
+
+            I practice competitive programming seriously: 1300+ DSA problems solved, maxed 1203 on Codeforces. Problem-solving directly influences how I design reliable, maintainable systems.
+
+            <br /><br />
+
+            My goal is to grow into a well-rounded engineer who writes solid code, understands systems deeply, and keeps pushing toward better solutions.
           </p>
         </div>
       </div>
@@ -48,17 +66,12 @@ const frameworksTools = [
 
     <section id="projects" class="section fade-in">
       <div class="container">
-        <SectionHeader title="projects" number="02" />
+        <SectionHeader title="projects" />
         <div class="projects-grid">
           {
             projects.map((project, index) => (
               <ProjectCard
-                title={project.data.title}
-                description={project.data.description}
-                tech={project.data.tech}
-                github={project.data.github}
-                live={project.data.live}
-                stars={project.data.stars}
+                project={project}
                 index={index}
               />
             ))
@@ -69,64 +82,80 @@ const frameworksTools = [
 
     <section id="skills" class="section fade-in">
       <div class="container">
-        <SectionHeader title="skills" number="03" />
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3>Programming Languages</h3>
-            {
-              programmingLanguages.map((skill) => (
-                <SkillBar name={skill.name} progress={skill.progress} />
-              ))
-            }
-          </div>
+        <SectionHeader title="skills" />
+        <div class="skills-grid tech-grid">
+          {
+            techIcons.map((tool) => (
+              <div class="tech-card">
+                <div class="tech-logo">
+                  <img src={tool.icon} alt={tool.name} on:error={`this.style.display='none'`} />
+                </div>
+                <div class="tech-label">{tool.name}</div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
 
-          <div class="skill-category">
-            <h3>Frameworks & Tools</h3>
-            {
-              frameworksTools.map((skill) => (
-                <SkillBar name={skill.name} progress={skill.progress} />
-              ))
-            }
-          </div>
+    <section id="profiles" class="section fade-in">
+      <div class="container">
+        <SectionHeader title="coding profiles" />
+        <div class="profiles-grid">
+          {
+            codingProfiles.map((profile) => (
+              <a href={profile.url} target="_blank" rel="noopener noreferrer" class="profile-card">
+                <div class="profile-logo">
+                  <img src={profile.icon} alt={profile.name} on:error={`this.style.display='none'`} />
+                </div>
+                <div class="profile-name">{profile.name}</div>
+                {profile.maxRating && (
+                  <div class="profile-rating">Max Rating: <span class="rating-value">{profile.maxRating}</span></div>
+                )}
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <section id="setup" class="section fade-in">
       <div class="container">
-        <SectionHeader title="tools & setup" number="04" />
-        <div class="misc-grid">
+        <SectionHeader title="tools & setup" />
+          <div class="misc-grid">
           <div class="misc-item slide-up stagger-1">
             <span class="misc-number">01</span>
-            <h3>Development Environment</h3>
+            <h3>Frontend & UI</h3>
             <div class="misc-content">
-              <span class="highlight">vscode</span> for web development.<br />
-              <span class="highlight">pycharm</span> professional edition.<br />
-              <span class="highlight">solar2d</span> for lua scripting.<br />
-              <span class="highlight">git</span> for version control.
+              <span class="highlight">React</span> for single-page apps and UI.
+              <br />
+              <span class="highlight">Recharts</span> / <span class="highlight">Chart.js</span> for charts and analytics.
+              <br />
+              <span class="highlight">Vercel</span> for frontend deployments.
             </div>
           </div>
 
           <div class="misc-item slide-up stagger-2">
             <span class="misc-number">02</span>
-            <h3>AI Assistance</h3>
+            <h3>Backend & Databases</h3>
             <div class="misc-content">
-              <span class="highlight">gemini 2.5 pro</span> for brainstorming.<br
-              />
-              <span class="highlight">claude opus 4.1</span> for code review.<br
-              />
-              <span class="highlight">github copilot pro+</span> for suggestions.
+              <span class="highlight">Node.js</span> + <span class="highlight">Express</span> for APIs.
+              <br />
+              <span class="highlight">MongoDB</span> for data storage and aggregation.
+              <br />
+              <span class="highlight">Socket.io</span> for real-time features and <span class="highlight">JWT</span> for auth.
             </div>
           </div>
 
           <div class="misc-item slide-up stagger-3">
             <span class="misc-number">03</span>
-            <h3>Current Device</h3>
+            <h3>Systems, Tools & Languages</h3>
             <div class="misc-content">
-              <span class="highlight">intel i3 11th gen</span> @4.1ghz<br />
-              <span class="highlight">8gb ddr4</span> @2666mhz<br />
-              <span class="highlight">intel uhd</span> graphics<br />
-              <span class="highlight">i use arch btw.</span>
+              <span class="highlight">C++ (g++ / Makefile)</span> for CLI & high-performance tools.
+              <br />
+              <span class="highlight">POSIX pthreads</span> for multithreading.
+              <br />
+              <span class="highlight">Firebase</span> and <span class="highlight">Google Gemini</span> used by AI/ops projects and auth.
             </div>
           </div>
         </div>
@@ -135,7 +164,7 @@ const frameworksTools = [
 
     <section id="contact" class="section fade-in">
       <div class="container">
-        <SectionHeader title="get in touch" number="05" />
+        <SectionHeader title="get in touch" />
         <ContactForm />
       </div>
     </section>
@@ -153,9 +182,9 @@ const frameworksTools = [
   }
 
   .text p {
-    font-size: clamp(24px, 5vw, 52px);
-    line-height: 1.2;
-    margin: 0 0 0 50px;
+    font-size: clamp(16px, 3.2vw, 28px);
+    line-height: 1.5;
+    margin: 0 0 0 40px;
     color: var(--secondary-text);
   }
 
@@ -166,10 +195,50 @@ const frameworksTools = [
   }
 
   .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    display: block;
     margin-top: 20px;
+  }
+
+  /* Tech icon grid */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    align-items: start;
+  }
+
+  .tech-card {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: var(--transition-bounce);
+    min-height: 110px;
+    text-align: center;
+  }
+
+  .tech-card:hover {
+    transform: translateY(-8px);
+    background: var(--hover-bg);
+    border-color: var(--primary-text);
+  }
+
+  .tech-logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .tech-label {
+    font-size: 14px;
+    color: var(--secondary-text);
+    font-weight: 500;
   }
 
   .skill-category h3 {
@@ -231,15 +300,81 @@ const frameworksTools = [
     font-weight: 400;
   }
 
+  /* Profiles section styles */
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .profile-card {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    transition: var(--transition-bounce);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .profile-card:hover {
+    transform: translateY(-10px);
+    background: var(--hover-bg);
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.1);
+  }
+
+  .
+   {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .profile-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-text);
+    text-align: center;
+  }
+
+  .profile-rating {
+    font-size: 13px;
+    color: var(--secondary-text);
+    text-align: center;
+    font-weight: 400;
+  }
+
+  .rating-value {
+    font-weight: 700;
+    color: var(--accent-color);
+  }
+
   @media (max-width: 768px) {
     .text p {
       margin: 0;
-      font-size: 20px;
+      font-size: 16px;
     }
 
     .skills-grid,
-    .misc-grid {
+    .misc-grid,
+    .profiles-grid {
       grid-template-columns: 1fr;
     }
   }
 </style>
+

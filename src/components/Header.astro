@@ -2,71 +2,68 @@
   <div class="container">
     <h1 class="name">
       <span class="name-line">
-        <span class="name-char">a</span><span class="name-char">a</span><span
-          class="name-char">r</span
-        ><span class="name-char">a</span><span class="name-char">v</span>
+        <span class="name-char">P</span><span class="name-char">R</span><span class="name-char">I</span><span class="name-char">Y</span><span class="name-char">A</span><span class="name-char">M</span>
       </span>
       <span class="name-line">
-        <span class="name-char">g</span><span class="name-char">u</span><span
-          class="name-char">p</span
-        ><span class="name-char">t</span><span class="name-char">a</span>
+        <span class="name-char">R</span><span class="name-char">A</span><span class="name-char">J</span>
       </span>
     </h1>
-    <p class="title">15-year-old developer from India.</p>
+    <p class="title">Developer from India.</p>
   </div>
 
   <div class="hero-strips" aria-hidden="true">
     <div class="strip">
       <div class="strip-text">
-        aarav gupta · aarav gupta · aarav gupta · aarav gupta · aarav gupta ·
-        aarav gupta ·
+        priyam raj · priyam raj · priyam raj · priyam raj · priyam raj ·
+        priyam raj ·
       </div>
     </div>
     <div class="strip reverse">
       <div class="strip-text">
-        aarav gupta · aarav gupta · aarav gupta · aarav gupta · aarav gupta ·
-        aarav gupta ·
+        priyam raj · priyam raj · priyam raj · priyam raj · priyam raj ·
+        priyam raj ·
       </div>
     </div>
     <div class="strip">
       <div class="strip-text">
-        aarav gupta · aarav gupta · aarav gupta · aarav gupta · aarav gupta ·
-        aarav gupta ·
+        priyam raj · priyam raj · priyam raj · priyam raj · priyam raj ·
+        priyam raj ·
       </div>
     </div>
     <div class="strip reverse">
       <div class="strip-text">
-        aarav gupta · aarav gupta · aarav gupta · aarav gupta · aarav gupta ·
-        aarav gupta ·
+        priyam raj · priyam raj · priyam raj · priyam raj · priyam raj ·
+        priyam raj ·
       </div>
     </div>
     <div class="strip">
       <div class="strip-text">
-        aarav gupta · aarav gupta · aarav gupta · aarav gupta · aarav gupta ·
-        aarav gupta ·
+        priyam raj · priyam raj · priyam raj · priyam raj · priyam raj ·
+        priyam raj ·
       </div>
     </div>
     <div class="strip reverse">
       <div class="strip-text">
-        aarav gupta · aarav gupta · aarav gupta · aarav gupta · aarav gupta ·
-        aarav gupta ·
+        priyam raj · priyam raj · priyam raj · priyam raj · priyam raj ·
+        priyam raj ·
       </div>
     </div>
   </div>
 
   <div class="contact">
     <div class="contact-left">
-      <a href="mailto:tribejustice35@gmail.com">mail</a>
-      <a href="https://github.com/Aarav2709" target="_blank" rel="noopener"
-        >github</a
-      >
-      <a href="https://linkedin.com/in/aarav2709" target="_blank" rel="noopener"
-        >linkedin</a
-      >
-    </div>
-    <div class="scroll-indicator">
-      <span>scroll</span>
-      <div class="scroll-line"></div>
+      <a href="mailto:priyamjha78@gmail.com" class="social-link" title="Email">
+        <img src="/logos/mail.svg" alt="Email" class="social-icon" />
+        <span>mail</span>
+      </a>
+      <a href="https://github.com/pri2003yam" target="_blank" rel="noopener" class="social-link" title="GitHub">
+        <img src="/logos/github.svg" alt="GitHub" class="social-icon" />
+        <span>github</span>
+      </a>
+      <a href="https://www.linkedin.com/in/priyam-raj-114331258/" target="_blank" rel="noopener" class="social-link" title="LinkedIn">
+        <img src="/logos/linkedin.svg" alt="LinkedIn" class="social-icon" />
+        <span>linkedin</span>
+      </a>
     </div>
   </div>
 </header>
@@ -146,7 +143,7 @@
     margin: 0;
     color: var(--primary-text);
     line-height: 1;
-    text-transform: lowercase;
+    text-transform: uppercase;
   }
 
   .name-line {
@@ -255,6 +252,31 @@
   .contact-left {
     display: flex;
     gap: 40px;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--secondary-text);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .social-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .social-link:hover .social-icon {
+    opacity: 1;
   }
 
   .contact a {

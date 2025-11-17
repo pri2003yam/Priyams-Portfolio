@@ -9,29 +9,32 @@
       from you!
     </p>
     <div class="contact-links">
-      <a href="mailto:tribejustice35@gmail.com" class="contact-link">
-        <span>tribejustice35@gmail.com</span>
+      <a href="mailto:priyamjha78@gmail.com" class="contact-link">
+        <img src="/logos/mail.svg" alt="Email" class="contact-icon" />
+        <span>priyamjha78@gmail.com</span>
       </a>
       <a
-        href="https://github.com/Aarav2709"
+        href="https://github.com/pri2003yam"
         class="contact-link"
         target="_blank"
         rel="noopener"
       >
-        <span>github.com/Aarav2709</span>
+        <img src="/logos/github.svg" alt="GitHub" class="contact-icon" />
+        <span>github.com/pri2003yam</span>
       </a>
       <a
-        href="https://linkedin.com/in/aarav2709"
+        href="https://www.linkedin.com/in/priyam-raj-114331258/"
         class="contact-link"
         target="_blank"
         rel="noopener"
       >
-        <span>linkedin.com/in/aarav2709</span>
+        <img src="/logos/linkedin.svg" alt="LinkedIn" class="contact-icon" />
+        <span>linkedin.com/in/priyam-raj-114331258</span>
       </a>
     </div>
   </div>
 
-  <form class="contact-form" id="contactForm">
+  <form class="contact-form" id="contactForm" action="https://formspree.io/f/meovdvdb" method="POST">
     <div class="form-group">
       <input
         type="text"
@@ -83,8 +86,6 @@
   }
 
   form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
     const submitButton = form.querySelector(
       ".submit-button"
     ) as HTMLButtonElement;
@@ -97,18 +98,10 @@
       if (buttonText) buttonText.textContent = "Sending...";
     }
 
+    // Allow form to submit to Formspree after a brief delay for UI feedback
     setTimeout(() => {
-      showNotification(
-        "Message sent successfully! I'll get back to you soon.",
-        "success"
-      );
-      form.reset();
-
-      if (submitButton) {
-        submitButton.disabled = false;
-        if (buttonText) buttonText.textContent = "send message";
-      }
-    }, 1000);
+      form.submit();
+    }, 500);
   });
 </script>
 
@@ -148,6 +141,18 @@
     color: var(--primary-text);
     border-bottom-color: var(--border-color);
     transform: translateX(5px);
+  }
+
+  .contact-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .contact-link:hover .contact-icon {
+    opacity: 1;
   }
 
   .contact-form {
