@@ -3,7 +3,7 @@ Priyam’s Portfolio
 A fast, modern developer portfolio built with Astro, optimized for performance, accessibility, and clean design.
 Showcases my projects, skills, achievements, competitive programming profiles, and engineering philosophy.
 
-<p align="center"> <img src="image.png" alt="Portfolio Banner" /> </p>
+
 Features
 
 Static Site Generation — blazing-fast load times
