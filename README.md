@@ -1,109 +1,128 @@
-# AarusPortfolio
+Priyam’s Portfolio
 
-Modern, performant portfolio built with Astro, featuring zero JavaScript by default and optimal performance.
+A fast, modern developer portfolio built with Astro, optimized for performance, accessibility, and clean design.
+Showcases my projects, skills, achievements, competitive programming profiles, and engineering philosophy.
 
-<p align="center">
-  <img src="image.png" alt="AarusPortfolio Banner" />
-</p>
+<p align="center"> <img src="image.png" alt="Portfolio Banner" /> </p>
+Features
 
-## Features
+Static Site Generation — blazing-fast load times
 
-- Static Site Generation: Lightning-fast load times
-- Zero JS by Default: Only hydrate what's needed
-- Content Collections: Type-safe project management
-- Dark Mode: Seamless theme switching
-- Optimized Fonts: Preloaded custom typography
-- Responsive Design: Mobile-first approach
-- Accessibility: WCAG compliant
-- SEO Optimized: Structured data and meta tags
+Minimal JavaScript — only essential interactive pieces
 
-## Performance
+Dark/Light Theme — persistent, smooth theme toggling
 
-- Lighthouse Score: 100/100/100/100
-- Bundle Size: <50KB total JavaScript
-- First Contentful Paint: <1.2s
-- Time to Interactive: <2.5s
+Dynamic Content Collections — type-safe project organization
 
-## Tech Stack
+Responsive UI — tailored for all screen sizes
 
-- Framework: Astro
-- Language: TypeScript
-- Styling: CSS with custom properties
-- Deployment: Vercel/Netlify ready
+Accessible Design — keyboard-friendly & WCAG-conscious
 
-## Getting Started
+SEO-ready — structured metadata, OpenGraph tags, canonical URLs
 
-```bash
+Performance Highlights
+
+Lighthouse Score: 100 / 100 / 100 / 100
+
+JavaScript Size: < 50KB total
+
+First Contentful Paint: < 1.2s
+
+Time to Interactive: < 2.5s
+
+Tech Stack
+
+Framework: Astro
+
+Language: TypeScript
+
+Styling: Custom CSS + CSS variables
+
+Deployment: Vercel / Netlify
+
+Content: Astro Content Collections
+
+Animations: Pure CSS (no GSAP)
+
+Getting Started
 npm install
 npm run dev
 npm run build
 npm run preview
-```
 
-## Project Structure
-
-```
+Project Structure
 src/
-  components/       Reusable Astro components
-  content/
-    projects/       Project markdown files
+  components/       UI components (Header, Cards, Forms, etc.)
   layouts/          Page layouts
-  pages/            Route pages
-  styles/           Global CSS
-  utils/            Helper functions
-public/             Static assets
+  pages/            Routes (Home, Contact, etc.)
+  content/
+    projects/       Your project markdown files
+  styles/           Global styles (theme, animations, typography)
+public/             Icons, logos, fonts, and static assets
 astro.config.mjs    Astro configuration
-```
 
-## Key Improvements from v2.0
+Add a New Project
 
-- 90% JavaScript Reduction: From 195KB to <50KB
-- Removed GSAP: Replaced with CSS animations
-- Build-time GitHub Stars: No client-side API calls
-- Component Architecture: Modular and maintainable
-- TypeScript: Type-safe content and props
-- Optimized Fonts: Preloaded and subsetted
+Create a new .md file inside src/content/projects/:
 
-## Adding New Projects
-
-Create a new `.md` file in `src/content/projects/`:
-
-```markdown
 ---
 title: "Project Name"
-description: "Project description"
-tech: ["tech1", "tech2"]
-github: "https://github.com/username/repo"
+description: "Short description of the project."
+tech: ["React", "Node.js", "MongoDB"]
+github: "https://github.com/pri2003yam/repo"
 live: "https://example.com"
 order: 1
 ---
-```
 
-## Customization
 
-- Colors: Edit `src/styles/variables.css`
-- Typography: Modify font in `src/styles/fonts.css`
-- Animations: Update `src/styles/animations.css`
+Astro will automatically include it in the Projects section sorted by order.
 
-## Commands
+Customizing Your Portfolio
 
-| Command              | Action                                           |
-| :------------------- | :----------------------------------------------- |
-| `npm install`        | Installs dependencies                            |
-| `npm run dev`        | Starts local dev server at `localhost:4321`      |
-| `npm run build`      | Build your production site to `./dist/`          |
-| `npm run preview`    | Preview your build locally, before deploying     |
-| `npm run astro ...`  | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro help` | Get help using the Astro CLI                     |
+Colors: Edit src/styles/variables.css
 
-## License
+Fonts: Update src/styles/fonts.css
+
+Dark Mode: Modify rules in src/styles/dark-mode.css
+
+Animations: Change timings in src/styles/animations.css
+
+Tech Stack Logos: Add PNG/SVGs in public/logos/
+
+Notable Improvements
+
+Compared to older versions of my portfolio:
+
+Drastically reduced JavaScript
+
+Removed heavy animation libraries
+
+Improved content architecture
+
+Added coding profiles (LC/CF/AtCoder/GFG)
+
+Reworked skills grid + responsive layout
+
+Enhanced SEO metadata and schema
+
+Commands
+Command	Description
+npm install	Install dependencies
+npm run dev	Start local dev server at localhost:4321
+npm run build	Build production files to ./dist/
+npm run preview	Preview the production build
+npm run astro ...	Run Astro CLI commands
+npm run astro help	Show Astro CLI help
+License
 
 MIT License
 
-## Author
+Author
 
-Aarav Gupta
+Priyam Raj
 
-- GitHub: @Aarav2709
-- LinkedIn: aarav2709
-- Email: tribejustice35@gmail.com
+GitHub: @pri2003yam
+
+LinkedIn: Priyam Raj
+
+Email: priyamjha78@gmail.com
